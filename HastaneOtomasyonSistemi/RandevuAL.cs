@@ -83,7 +83,8 @@ namespace HastaneOtomasyonSistemi
        
 
             connection.Open();
-            SqlCommand command = new SqlCommand("select doktor,gun,saat,tcKimlikNo from tbl_randevular", connection);
+            SqlCommand command = new SqlCommand("select doktor,gun,saat,tcKimlikNo from tbl_randevular where tcKimlikNo=@a1", connection);
+            command.Parameters.AddWithValue("@a1", tcKimlikNo);
             SqlDataReader reader = command.ExecuteReader();
 
             while (reader.Read())
